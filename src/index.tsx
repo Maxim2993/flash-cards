@@ -1,9 +1,11 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
 import { CssBaseline } from '@mui/material';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { store } from './app/store';
 
 const container = document.getElementById('root') as HTMLElement;
 const root = createRoot(container!);
@@ -11,9 +13,11 @@ const root = createRoot(container!);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <CssBaseline>
-        <App />
-      </CssBaseline>
+      <Provider store={store}>
+        <CssBaseline>
+          <App />
+        </CssBaseline>
+      </Provider>
     </BrowserRouter>
   </React.StrictMode >
 );
