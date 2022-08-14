@@ -1,7 +1,17 @@
 import React from 'react';
+import Box from '@mui/material/Box';
+import { LoginForm } from '../UI-components/molecules/LoginForm';
 
 export const LoginPage = () => {
     return (
-        <h2>Login Page</h2>
+        <Box sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100vw',
+            height: '100vh'
+        }}>
+            <LoginForm />
+        </Box>
     )
 };
