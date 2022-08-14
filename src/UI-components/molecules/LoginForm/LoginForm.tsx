@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useFormik, FormikProps } from 'formik';
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import * as Yup from 'yup';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -10,16 +10,23 @@ import { useAppDispatch } from '../../../app/hooks';
 import { login } from '../../../app/slices/auth/authSlice';
 import { MIN_LENGTH_LOGIN, MIN_LENGTH_PASSWORD, ERROR_MESSAGES } from '../../../constants';
 
-export type FormValues = {
+type FormValues = {
     login: string;
     password: string;
 };
+
+type StateType = {
+    from: { pathname: string }
+}
 
 export const LoginForm = () => {
 
     const [submitError, setSubmitError] = useState('');
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
+    const state = location.state as StateType;
+    const from = state?.from?.pathname || '/';
 
     const isSubmitError = (values: FormValues): Boolean => {
         return !(values.login === 'admin' && values.password === 'admin');
@@ -46,7 +53,7 @@ export const LoginForm = () => {
                 setSubmitError(ERROR_MESSAGES.SUBMIT_ERROR)
             } else {
                 dispatch(login({ isAuth: true }));
-                navigate('/');
+                navigate(from);
             }
         },
     });

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom'
+import { Navigate, useLocation } from 'react-router-dom'
+import { useAppSelector } from '../app/hooks';
 
 export type ProtectedRouteProps = {
     authenticationPath: string;
@@ -7,10 +8,17 @@ export type ProtectedRouteProps = {
 };
 
 export const ProtectedRoute = ({ authenticationPath, outlet }: ProtectedRouteProps) => {
-    const isAuth = false;
+    const location = useLocation();
+    const isAuth = useAppSelector((state) => state.auth.isAuth)
     if (isAuth) {
         return outlet;
     } else {
-        return <Navigate to={{ pathname: authenticationPath }} />;
+        return (
+            <Navigate
+                to={{ pathname: authenticationPath }}
+                state={{ from: location }}
+                replace
+            />
+        );
     }
 };
