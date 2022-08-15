@@ -7,3 +7,5 @@ export const ERROR_MESSAGES = {
     REQUIRED: 'Пожалуйста, заполните это поле',
     SUBMIT_ERROR: 'Неправильный логин, или пароль'
 }
+
+export const BASE_URL_CARDS = 'http://demo7281361.mockable.io'
