@@ -8,4 +8,8 @@ export const ERROR_MESSAGES = {
     SUBMIT_ERROR: 'Неправильный логин, или пароль'
 }
 
+export const INFO_MESSAGES = {
+    SERVER_ERROR: 'Что-то пошло не так'
+}
+
 export const BASE_URL_CARDS = 'http://demo7281361.mockable.io'
