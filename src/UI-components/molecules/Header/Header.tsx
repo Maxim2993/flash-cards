@@ -18,7 +18,7 @@ export const Header: React.FC = () => {
         dispatch(logout());
     }
     return (
-        <Box component='header' sx={{ background: 'grey', width: '100vw', position: 'absolute', top: 0 }}>
+        <Box component='header' sx={{ background: 'grey', width: '100vw', position: 'absolute', top: 0, zIndex: 20 }}>
             <Container sx={{
                 display: 'flex',
                 justifyContent: 'space-between',

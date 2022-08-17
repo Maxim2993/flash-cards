@@ -15,8 +15,14 @@ export const Footer: React.VFC<FooterProps> = ({ text }) => (
         background: 'grey'
     }}
     >
-        <Container >
-            <Typography variant="body2" sx={{ textTransform: 'none' }} >
+        <Container sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            mt: 2,
+            mb: 2
+        }}>
+            <Typography variant="body2" sx={{ textTransform: 'none', color: 'white' }} >
                 {text}
             </Typography>
         </Container>
